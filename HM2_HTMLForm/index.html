@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form</title>
+</head>
+
+<body>
+    <table border="1" bordercolor="cfcccc" cellSpacing="0" cellPadding="10" width="35%" align="center">
+        <form action="" method="POST">
+            <thead>
+                <tr>
+                    <th colspan="2" align="center">
+                        Summar Camp Registration Form
+                    </th>
+                </tr>
+            </thead>
+            <tbody align="right">
+                <tr>
+                    <td>
+                        <label for="fName">Full Name</label>
+                    </td>
+                    <td align="left">
+                        <input type="text" name="fName" id="fName" placeholder="Enter First Name" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="DOB">Date of Birth</label>
+                    </td>
+                    <td align="left">
+                        <input type="date" name="DOB" id="DOB" min="2007-01-01" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="gender">Gender</label>
+                    </td>
+                    <td align="left">
+                        <input type="radio" name="gender" id="male" required>
+                        <label for="male">Male</label>
+                        <input type="radio" name="gender" id="female" required>
+                        <label for="female">Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="country">Country</label>
+                    </td>
+                    <td align="left">
+                        <select name="country" id="country" required>
+                            <option value="generalCountry" disabled selected>Country</option>
+                            <option value="hebron">Hebron</option>
+                            <option value="nablus">Nablus</option>
+                            <option value="jenin">Jenin</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">E-mail</label>
+                    </td>
+                    <td align="left">
+                        <input type="email" name="email" id="email" placeholder="Enter E-mail" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="phoneNO">Phone</label>
+                    </td>
+                    <td align="left">
+                        <input pattern="^(05[69]\d{7})$" type="tel" name="phoneNO" id="phoneNO"
+                            placeholder="Enter Phone" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password</label>
+                    </td>
+                    <td align="left">
+                        <input type="password" name="password" id="password" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="confPassword">Confirm Password</label>
+                    </td>
+                    <td align="left">
+                        <input type="password" name="confPassword" id="confPassword" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="gpa">GPA (100)</label>
+                    </td>
+                    <td align="left">
+                        <input type="" name="gpa" id="gpa" placeholder="92.5" max="100" step="0.1" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="progSkills">Programmings skills (0-100)</label>
+                    </td>
+                    <td align="left">
+                        <input type="range" name="progSkills" id="progSkills">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="favColor">Your favorite color</label>
+                    </td>
+                    <td align="left">
+                        <input type="color" name="favColor" id="favColor">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td align="left">
+                        <input type="checkbox" name="agreeTerms" id="agreeTerms" required>
+                        <label for="agreeTerms">I Agree to the Terms of use</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="submit">
+                        <input type="reset" value="cancel">
+                    </td>
+                </tr>
+
+            </tbody>
+        </form>
+    </table>
+</body>
+
+</html>
