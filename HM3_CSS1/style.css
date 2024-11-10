@@ -1,8 +1,12 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 0px;
     box-sizing: border-box;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     background-image: linear-gradient(rgb(44, 44, 44), rgb(45, 45, 45), rgb(16, 15, 15));
 }
 
@@ -14,16 +18,13 @@ h1 {
     -webkit-background-clip: text;
     color: transparent;
     text-align: center;
-    position: absolute;
-    top: 18px;
-    left: 577px;
 }
 
 .container {
     position: relative;
     width: 350px;
     height: 334px;
-    margin: 190px 550px;
+    background-color: rgb(255, 255, 255);
 }
 
 .square {
@@ -111,7 +112,7 @@ h1 {
 .middle_oval {
     width: 194px;
     height: 97px;
-    border: 5px solid rgb(147, 146, 146);
+    border: 5px solid rgb(196, 196, 196);
     position: absolute;
     top: 116px;
     left: 73px;
