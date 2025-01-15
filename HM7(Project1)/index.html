@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+
+    <title>Rock || Paper || Scissors Game</title>
+</head>
+
+<body class="preload">
+    <div class="container">
+        <header class="header">
+            <img src="./images/logo.svg" alt="logo" class="logo" />
+            <div class="score">
+                <div class="score__title">score</div>
+                <div class="score__number">0</div>
+            </div>
+        </header>
+        <section class="game">
+            <button class="choice-btn" data-choice="paper">
+                <div class="choice paper">
+                    <img src="./images/paper.svg" alt="Paper" />
+                </div>
+            </button>
+            <button class="choice-btn" data-choice="scissors">
+                <div class="choice scissors">
+                    <img src="./images/scissors.svg" alt="Scissors" />
+                </div>
+            </button>
+            <button class="choice-btn" data-choice="rock">
+                <div class="choice rock">
+                    <img src="./images/rock.svg" alt="Rock" />
+                </div>
+            </button>
+        </section>
+    </div>
+
+    <section class="results hidden">
+        <h2 class="results_heading">you picked</h2>
+        <h2 class="results_heading">the computer picked</h2>
+        <div class="results_result"></div>
+        <div class="results_winner hidden">
+            <h3 class="results_text"></h3>
+            <button class="play-again">play again</button>
+        </div>
+        <div class="results__result"></div>
+    </section>
+
+    <button class="rules-btn" tabindex="1">rules</button>
+    <div class="modal">
+        <div class="modal_container">
+            <header class="modal_header">
+                <h2 class="modal_heading">rules</h2>
+                <button class="close-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+            <img src="./images/rules.svg" alt="Rules Image" class="rules-img" />
+        </div>
+    </div>
+</body>
+
+</html>
