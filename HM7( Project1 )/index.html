@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="score-panel">
+            <div class="game-title">
+                <img src="assets/title.png" />
+            </div>
+            <div class="score-display">
+                <p>POINTS</p>
+                <h1> 0 </h1>
+            </div>
+        </div>
+        <div class="selection-area">
+            <div class="option option-paper">
+                <img src="assets/Paper.png" onclick="handleUserChoice('paper')" />
+            </div>
+            <div class="option option-scissors">
+                <img src="assets/Scissors.png" onclick="handleUserChoice('scissors')" />
+            </div>
+            <div class="option option-rock">
+                <img src="assets/Rock.png" onclick="handleUserChoice('rock')" />
+            </div>
+        </div>
+        <div class="battle-arena">
+            <div class="player-choice">
+                <h1>YOUR CHOICE</h1>
+                <div class="choice-display">
+                    <img id="playerChoiceImage" src="assets/Paper.png">
+                </div>
+            </div>
+            <div class="result-section">
+                <div class="game-result">
+                    <h1> YOU WIN! </h1>
+                </div>
+                <div class="restart-btn" onclick="resetGame()">TRY AGAIN</div>
+            </div>
+            <div class="opponent-choice">
+                <h1>OPPONENT'S CHOICE</h1>
+                <div class="choice-display">
+                    <img id="opponentChoiceImage" src="assets/Paper.png" />
+                </div>
+            </div>
+        </div>
+        <button class="rules-toggle-btn" tabindex="1">Game Rules</button>
+        <div class="popup">
+            <div class="popup-content">
+                <header class="popup-header">
+                    <h2 class="popup-title">Rules</h2>
+                    <button class="popup-close-btn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </header>
+                <img src="assets/rules.svg" alt="Rules Image" class="popup-rules-img" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
