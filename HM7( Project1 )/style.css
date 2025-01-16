@@ -93,12 +93,12 @@ body {
     margin-left: 20px;
 }
 
-.option-rock {
+.option {
     cursor: pointer;
     transition: all 0.25s;
 }
 
-.option-rock:hover {
+.option:hover {
     transform: translate3d(0px, -8px, 0px);
 }
 

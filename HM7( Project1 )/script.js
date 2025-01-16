@@ -1,0 +1,93 @@
+const btnRules = document.querySelector(".rules-toggle-btn");
+const btnClose = document.querySelector(".popup-close-btn");
+const modalRules = document.querySelector(".popup");
+
+const handOptions = {
+    "rock": "assets/Rock.png",
+    "paper": "assets/Paper.png",
+    "scissors": "assets/Scissors.png"
+}
+
+let SCORE = 0;
+
+const handleUserChoice = (hand) => {
+    let selectionArea = document.querySelector(".selection-area");
+    selectionArea.style.display = "none";
+
+    let battleArena = document.querySelector(".battle-arena");
+    battleArena.style.display = "flex";
+
+    document.getElementById("playerChoiceImage").src = handOptions[hand];
+
+    handleComputerChoice(hand);
+};
+
+const handleComputerChoice = (hand) => {
+    let hands = ["rock", "paper", "scissors"];
+    let cpHand = hands[Math.floor(Math.random() * hands.length)];
+
+    document.getElementById("opponentChoiceImage").src = handOptions[cpHand];
+
+    referee(hand, cpHand);
+};
+
+const referee = (userHand, cpHand) => {
+    if (userHand == "paper" && cpHand == "scissors") {
+        setDecision("YOU LOSE!");
+        setScore(SCORE - 1);
+    }
+    if (userHand == "paper" && cpHand == "rock") {
+        setDecision("YOU WIN!");
+        setScore(SCORE + 1);
+    }
+    if (userHand == "paper" && cpHand == "paper") {
+        setDecision("It's a tie!");
+    }
+    if (userHand == "rock" && cpHand == "scissors") {
+        setDecision("YOU WIN!");
+        setScore(SCORE + 1);
+    }
+    if (userHand == "rock" && cpHand == "paper") {
+        setDecision("YOU LOSE!");
+        setScore(SCORE - 1);
+    }
+    if (userHand == "rock" && cpHand == "rock") {
+        setDecision("It's a tie!");
+    }
+    if (userHand == "scissors" && cpHand == "scissors") {
+        setDecision("It's a tie!");
+    }
+    if (userHand == "scissors" && cpHand == "rock") {
+        setDecision("YOU LOSE!");
+        setScore(SCORE - 1);
+    }
+    if (userHand == "scissors" && cpHand == "paper") {
+        setDecision("YOU WIN!");
+        setScore(SCORE + 1);
+    }
+};
+
+const resetGame = () => {
+    let battleArena = document.querySelector(".battle-arena");
+    battleArena.style.display = "none";
+
+    let selectionArea = document.querySelector(".selection-area");
+    selectionArea.style.display = "flex";
+}
+
+const setDecision = (decision) => {
+    document.querySelector(".game-result h1").innerText = decision;
+}
+
+const setScore = (newScore) => {
+    SCORE = newScore;
+    document.querySelector(".score-display h1").innerText = newScore;
+}
+
+// Show | Hide Rules
+btnRules.addEventListener("click", () => {
+    modalRules.classList.toggle("show-modal");
+});
+btnClose.addEventListener("click", () => {
+    modalRules.classList.toggle("show-modal");
+});
