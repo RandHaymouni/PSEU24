@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo</title>
+  <link rel="icon" type="image/svg+xml" href="https://img.icons8.com/clouds/100/todo-list.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="logo"><img width="50" height="50" src="https://img.icons8.com/clouds/100/todo-list.png"
+        alt="todo-list" />
+      <h4>To Do List</h4>
+    </div>
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" name="search" id="search" placeholder="Search a note" class="search-bar"
+        oninput="search()" />
+    </div>
+  </nav>
+  <div class="todo">
+    <div class="new" id="todo">
+      <i class="fa-solid fa-pen"></i>
+      <input type="text" name="new-todo" id="new-todo" placeholder="New task" class="new-todo edit"
+        onkeypress="addFunc(event)" />
+      <button onclick="addFunc()"><i class="fa-solid fa-plus"></i></button>
+    </div>
+    <div class="todos">
+      <p>Todo</p>
+      <ul id="todos">
+        <!-- <li>
+              <input type="checkbox">
+              <p>1. Git add ➕</p>
+              <div>
+                <button>❌</button>
+                <button>✏</button>
+              </div>
+            </li>
+            <li>
+              <input type="checkbox">
+              <p>2. Git commit 🔃</p>
+              <div>
+                <button>❌</button>
+                <button>✏</button>
+              </div>
+            </li>
+            <li>
+              <input type="checkbox">
+              <p>2. Git push ⬆</p>
+              <div>
+                <button>❌</button>
+                <button>✏</button>
+              </div>
+            </li> -->
+      </ul>
+    </div>
+    <div class="done">
+      <p>Done</p>
+      <ul id="dones">
+        <!-- <li>
+            <input type="checkbox" checked>
+            <p>4. Go home 🏠</p>
+          </li>
+          <li>
+            <input type="checkbox" checked>
+            <p>5. Eat Lunch 🍝</p>
+          </li> -->
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
