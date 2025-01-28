@@ -10,23 +10,23 @@ const handOptions = {
 
 let SCORE = 0;
 
-const handleUserChoice = (hand) => {
-    let selectionArea = document.querySelector(".selection-area");
-    selectionArea.style.display = "none";
+const pickUserHand = (hand) => {
+    let hands = document.querySelector(".hands");
+    hands.style.display = "none";
 
-    let battleArena = document.querySelector(".battle-arena");
-    battleArena.style.display = "flex";
+    let contest = document.querySelector(".contest");
+    contest.style.display = "flex";
 
-    document.getElementById("playerChoiceImage").src = handOptions[hand];
+    document.getElementById("userPickImage").src = handOptions[hand];
 
-    handleComputerChoice(hand);
+    pickComputerHand(hand);
 };
 
-const handleComputerChoice = (hand) => {
+const pickComputerHand = (hand) => {
     let hands = ["rock", "paper", "scissors"];
     let cpHand = hands[Math.floor(Math.random() * hands.length)];
 
-    document.getElementById("opponentChoiceImage").src = handOptions[cpHand];
+    document.getElementById("computerPickImage").src = handOptions[cpHand]
 
     referee(hand, cpHand);
 };
@@ -67,24 +67,23 @@ const referee = (userHand, cpHand) => {
     }
 };
 
-const resetGame = () => {
-    let battleArena = document.querySelector(".battle-arena");
-    battleArena.style.display = "none";
+const restartGame = () => {
+    let contest = document.querySelector(".contest");
+    contest.style.display = "none";
 
-    let selectionArea = document.querySelector(".selection-area");
-    selectionArea.style.display = "flex";
+    let hands = document.querySelector(".hands");
+    hands.style.display = "flex";
 }
 
 const setDecision = (decision) => {
-    document.querySelector(".game-result h1").innerText = decision;
+    document.querySelector(".decision h1").innerText = decision;
 }
 
 const setScore = (newScore) => {
     SCORE = newScore;
-    document.querySelector(".score-display h1").innerText = newScore;
+    document.querySelector(".score h1").innerText = newScore;
 }
 
-// Show | Hide Rules
 btnRules.addEventListener("click", () => {
     modalRules.classList.toggle("show-modal");
 });
