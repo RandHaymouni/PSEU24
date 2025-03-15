@@ -1,0 +1,187 @@
+.container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.progressContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.questionCounter {
+    background-color: rgba(255, 107, 107, 0.2);
+    color: #f8f8f2;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.3rem 2.5rem;
+    border-radius: 50px;
+}
+
+.question {
+    color: #f8f8f2;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.option {
+    background-color: #313244;
+    border: 2px solid #313244;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option:hover:not(.correct):not(.incorrect) {
+    background-color: #45475a;
+    border-color: #45475a;
+}
+
+.selected {
+    background-color: #45475a;
+    border-color: #ff6b6b;
+}
+
+.correct {
+    background-color: rgba(166, 227, 161, 0.2);
+    border-color: #a6e3a1;
+}
+
+.incorrect {
+    background-color: rgba(243, 139, 168, 0.2);
+    border-color: #f38ba8;
+}
+
+.optionLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.radioInput {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radioControl {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #cdd6f4;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+}
+
+.radioInput:checked+.radioControl {
+    border-color: #ff6b6b;
+}
+
+.radioInput:checked+.radioControl::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff6b6b;
+}
+
+.optionText {
+    color: #cdd6f4;
+    font-size: 1rem;
+}
+
+.feedbackContainer {
+    margin-top: 1.5rem;
+}
+
+.correctFeedback,
+.incorrectFeedback {
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.correctFeedback>p,
+.incorrectFeedback>p {
+    margin: 5px;
+}
+
+.correctFeedback {
+    background-color: rgba(166, 227, 161, 0.2);
+    color: #a6e3a1;
+    border: 1px solid rgba(166, 227, 161, 0.3);
+}
+
+.incorrectFeedback {
+    background-color: rgba(243, 139, 168, 0.2);
+    color: #f38ba8;
+    border: 1px solid rgba(243, 139, 168, 0.3);
+}
+
+.submitButton,
+.nextButton {
+    width: 100%;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submitButton,
+.nextButton {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    color: white;
+}
+
+.submitButton:hover:not(.disabled),
+.nextButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.submitButton:active:not(.disabled) {
+    transform: translateY(1px);
+}
+
+.disabled {
+    background: #45475a;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.nextButton:active {
+    transform: translateY(1px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
