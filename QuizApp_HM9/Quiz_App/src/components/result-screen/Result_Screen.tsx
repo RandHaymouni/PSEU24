@@ -16,7 +16,7 @@ const Result_Screen = (props: IResultScreenProps) => {
 
                 <div className={styles.feedback}>
                     {props.score >= 8 ? (
-                        <p className={styles.excellentFeedback}>Excellent! You really know your React!</p>
+                        <p className={styles.excellentFeedback}>Excellent! You really know the React!</p>
                     ) : props.score >= 5 ? (
                         <p className={styles.goodFeedback}>Good job! You have a solid understanding of React.</p>
                     ) : (
