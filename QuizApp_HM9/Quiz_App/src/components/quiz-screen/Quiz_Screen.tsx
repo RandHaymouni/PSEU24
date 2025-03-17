@@ -1,5 +1,5 @@
 import styles from './quiz_screen.module.css';
-import clock from '../../assets/hourglass.png';
+import clock from '../../assets/clock.png';
 import { IQuizQuestion } from '../../types/types';
 import { useState, useEffect } from 'react';
 
@@ -54,11 +54,10 @@ const Quiz_Screen = (props: IQuizScreenProps) => {
         <div className={styles.container}>
             <div className={styles.progressContainer}>
                 <div className={styles.questionCounter}>Question {props.questionNumber} of {props.totalQuestion}
-                    <hr />
                 </div>
-                <div className={styles.questionCounter}
+                <div className={styles.timerCounter}
                     style={{ background: time <= 3 ? "#8f2125" : time <= 6 ? "#d6a32b" : "#ff6b6b33"}}>
-                    <img style={{ width: '15px', height: '15px', alignItems: 'center', marginRight: '3px', marginLeft: '-3px' }} src={clock} alt="clock_image" />
+                    <img style={{ width: '20px', height: '20px', marginRight: '9px' }} src={clock} alt="clock_image" />
                     Time Left : {time}
                     <hr />
                 </div>
