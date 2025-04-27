@@ -1,69 +1,99 @@
-import './App.css'
-import StartScreen from './components/start-screen/Start_Screen';
-import QuizScreen from './components/quiz-screen/Quiz_Screen';
-import ResultScreen from './components/result-screen/Result_Screen';
-import quizData from './quizData/quizData'
-import { IQuizState } from './types/types'
-import quizReducer from './redusers/quizReduser';
-import { useReducer, useEffect } from 'react';
+import "./App.css";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import QuizProvider, { QuizContext } from '../src/contexts/QuizContext';
+import ProtectedRoute from "./components/guards/Guard"
+import HeroPage from "./pages/hero-page/Hero_page";
+import StartPage from "./pages/start-page/Start_Screen";
+import QuizPage from "./pages/quiz-page/Quiz_Screen";
+import ResultPage from "./pages/result-page/Result_Screen";
+import LoginPage from "./pages/login-page/Login_Screen";
+import ManageQuizPage from "./pages/manage-page/ManageQuestions_Screen";
+import InsertQuestionPage from "./components/insert-screen/InsertQuestion_Screen";
+import EditQuestionPage from "./components/edit-screen/Edit_Screen"
+
 function App() {
-
-  const getInitialState = (): IQuizState => {
-    const StoreQuizState = localStorage.getItem("quizState");
-    return StoreQuizState ? JSON.parse(StoreQuizState) : {
-      status: "start",
-      currentQuestionIndex: 0,
-      userAnswers: [],
-      score: 0,
-      showFeedback: false,
-      selectedAnswer: "",
-    };
-  };
-  // const INITIAL_STATE: IQuizState = {
-  //   status: "start",
-  //   currentQuestionIndex: 0,
-  //   userAnswers: [],
-  //   score: 0,
-  //   showFeedback: false,
-  //   selectedAnswer: null,
-  // }
-
-  const [state, dispatch] = useReducer(quizReducer, getInitialState());
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    console.log("Quiz state: ", state);
-    localStorage.setItem("quizState", JSON.stringify(state));
-  }, [state]);
+    const storedData = localStorage.getItem("quizData");
+    if (!storedData) {
+        console.error("Quiz data not found in localStorage");
+    }
+}, []);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      setIsLoggedIn(true);
+    }
+    else {
+      setIsLoggedIn(false);
+      navigate("/");
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
 
   return (
-    <div className="container">
-      <div className="header">
-        <h1 className="title">React Quiz</h1>
+    <QuizProvider>
+      <div className="container">
+        <div className="header">
+          <h1 className="title">React Quiz</h1>
+          {isLoggedIn && (
+            <button className="logoutButton" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
+        </div>
+
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<HeroPage />} />
+            <Route path="/start" element={<StartPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/manage"
+              element={
+                <ProtectedRoute allowedRoles={["admin"]}>
+                  <ManageQuizPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/insert"
+              element={
+                <ProtectedRoute allowedRoles={["admin"]}>
+                  <InsertQuestionPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/edit/:id"
+              element={
+                <ProtectedRoute allowedRoles={["admin"]}>
+                  <EditQuestionPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/quiz/:questionId"
+              element={<QuizPage />
+              }
+            />
+            <Route path="/result"
+              element={<ResultPage />
+              }
+            />
+            <Route path="*" element={<Navigate to="/start" />} />
+          </Routes>
+        </div>
       </div>
-      <div className="content">
-        {
-          state.status === "start" ?
-            <StartScreen onStart={() => dispatch({ type: "START_QUIZ" })} />
-            : state.status === "in-progress" ?
-              <QuizScreen
-                question={quizData[state.currentQuestionIndex]}
-                selectedAnswer={state.selectedAnswer}
-                questionNumber={state.currentQuestionIndex + 1}
-                totalQuestion={quizData.length}
-                showFeedback={state.showFeedback}
-                onSelectAnswer={(answer: string) => dispatch({ type: "SELECT_ANSWER", payload: answer })}
-                onSubmit={() => dispatch({ type: "SUBMIT_ANSWER" })}
-                onClickNext={() => dispatch({ type: "NEXT_QUESTION" })}
-              />
-              :
-              <ResultScreen
-                score={state.score}
-                totalQuestions={quizData.length}
-                onRestart={() => dispatch({ type: "RESTART_QUIZ" })}
-              />
-        }
-      </div>
-    </div>
+    </QuizProvider>
   )
 }
 

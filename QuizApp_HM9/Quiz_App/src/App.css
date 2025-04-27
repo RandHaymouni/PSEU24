@@ -1,42 +1,68 @@
+/* Add these styles to your App.css file */
 .container {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  background-color: #1e1e2e;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.5s ease-out;
-  width: auto;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
-  margin: auto;
+  background-color: #1a1b2e;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-  padding: 1.5rem;
-  text-align: center;
+  padding: 1rem 1rem;
+  color: white;
 }
 
 .title {
-  color: white;
-  font-size: 1.75rem;
-  font-weight: 700;
   margin: 0;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.logoutButton {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: 1px solid white;
+  border-radius: 50px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.logoutButton:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.logoutButton:active {
+  transform: translateY(0);
 }
 
 .content {
-  padding: 1.5rem;
+  flex: 1;
+  padding: 1rem;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+/* Responsive design */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
   }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .logoutButton {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
   }
 }

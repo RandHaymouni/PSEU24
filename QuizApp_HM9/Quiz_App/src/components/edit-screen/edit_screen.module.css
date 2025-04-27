@@ -1,0 +1,255 @@
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-height: 89vh;
+  background-color: #1a1b2e; /* Dark navy background */
+  color: white;
+  overflow: hidden; /* Prevent scrolling on the main container */
+}
+
+/* Header */
+.header {
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.heading {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+}
+
+/* Card that contains the form */
+.card {
+  max-width: 1000px;
+  width: 100%;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background-color: #252640; /* Slightly lighter than the background */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Allow scrolling within the card if needed */
+  max-height: calc(100vh - 120px); /* Ensure it fits in the viewport */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+/* Hide scrollbar for Chrome/Safari/Opera */
+.card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Error message */
+.error {
+  background-color: rgba(255, 107, 107, 0.2);
+  border-left: 4px solid #ff6b6b;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border-radius: 4px;
+  color: #ffb3b3;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d1d1e0;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.8rem;
+  background-color: #1e1f36; /* Darker input background */
+  border: 1px solid #3a3b59;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  resize: none; /* Prevent textarea resizing */
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #ff6b6b;
+}
+
+/* Options section */
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.optionsHeading {
+  font-size: 1.1rem;
+  color:#d1d1e0;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.optionGroup {
+  margin-bottom: 1rem;
+}
+
+.optionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.optionLabel {
+  font-weight: 500;
+  color: #d1d1e0;
+}
+
+.radioContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radioInput {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #3a3b59;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.radioInput:checked {
+  border-color: #ff6b6b;
+  background-color: #ff6b6b;
+}
+
+.radioInput:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.radioLabel {
+  font-size: 0.9rem;
+  color: #b8b9c5;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #1e1f36; /* Darker input background */
+  border: 1px solid #3a3b59;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+}
+
+/* Button group */
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancelButton, .saveButton {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cancelButton {
+  background-color: #3a3b59;
+  color: white;
+}
+
+.saveButton {
+  background: linear-gradient(to right, #ff6b6b, #ff8e72);
+  color: white;
+}
+
+.cancelButton:hover, .saveButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cancelButton:active, .saveButton:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .card {
+    width: 95%;
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+  
+  .optionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .buttonGroup {
+    flex-direction: column-reverse;
+    gap: 0.8rem;
+  }
+  
+  .cancelButton, .saveButton {
+    width: 100%;
+  }
+}
+
+/* For smaller screens */
+@media (max-height: 700px) {
+  .card {
+    max-height: calc(100vh - 100px);
+    padding: 1rem;
+  }
+  
+  .form {
+    gap: 1rem;
+  }
+  
+  .textarea {
+    min-height: 60px;
+  }
+  
+  .optionsContainer {
+    gap: 0.8rem;
+  }
+}

@@ -1,5 +1,5 @@
 export interface IQuizQuestion {
-    id: number;
+    // id: number;
     question: string;
     options: string[];
     correctAnswer: string;

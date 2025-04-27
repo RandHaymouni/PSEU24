@@ -1,0 +1,181 @@
+.container {
+    max-width: 500px;
+    margin: 1.5rem auto;
+    padding: 30px 4rem;
+    background:#1f283a;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #1f283a;
+  }
+  
+  .container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: whitesmoke;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+  
+  .title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 3px;
+    background:linear-gradient(135deg, #ff6b6b, #ff8e53);
+    border-radius: 3px;
+  }
+  
+  .formGroup {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: whitesmoke;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  
+  .formGroup:focus-within .label {
+    color: whitesmoke;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #2d3748;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+  }
+  
+  .input::placeholder {
+    color: #a0aec0;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .button {
+    flex: 1;
+    padding: 0.85rem 1.5rem;
+    background:linear-gradient(135deg, #ff6b6b, #ff8e53);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(239, 234, 234, 0.3);
+  }
+  
+  .button:hover::before {
+    left: 100%;
+  }
+  
+  .button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 107, 107, 0.2);
+  }
+  
+  /* Additional elements for enhanced design */
+  .forgotPassword {
+    display: block;
+    text-align: right;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #718096;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .forgotPassword:hover {
+    color: #ff6b6b;
+    text-decoration: underline;
+  }
+  
+  .rememberMe {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+  }
+  
+  .checkbox {
+    margin-right: 0.5rem;
+    accent-color: #ff6b6b;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .container {
+      padding: 30px 1.5rem;
+      margin: 1.5rem auto;
+    }
+    
+    .title {
+      font-size: 1.75rem;
+    }
+    
+    .buttonGroup {
+      flex-direction: column;
+    }
+  }
