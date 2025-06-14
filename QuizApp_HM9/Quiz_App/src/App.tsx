@@ -14,86 +14,98 @@ import EditQuestionPage from "./components/edit-screen/Edit_Screen"
 
 function App() {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+  const quizContext = useContext(QuizContext);
+
+  console.log("quizContext:", quizContext);
 
   useEffect(() => {
     const storedData = localStorage.getItem("quizData");
     if (!storedData) {
-        console.error("Quiz data not found in localStorage");
-    }
-}, []);
-
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setIsLoggedIn(true);
-    }
-    else {
-      setIsLoggedIn(false);
-      navigate("/");
+      console.error("Quiz data not found in localStorage");
     }
   }, []);
 
+  // useEffect(() => {
+  //   const user = localStorage.getItem("user");
+  //   if (user) {
+  //     setIsLoggedIn(true);
+  //   }
+  //   else {
+  //     setIsLoggedIn(false);
+  //     navigate("/");
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    console.log("user from localStorage:", user);
+    setIsLoggedIn(!!user);
+  }, []);
+
+
+  console.log("isLoggedIn:", isLoggedIn);
+
+
   const handleLogout = () => {
+    quizContext?.dispatch({ type: "RESTART_QUIZ" });
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     navigate("/");
   };
 
   return (
-    <QuizProvider>
-      <div className="container">
-        <div className="header">
-          <h1 className="title">React Quiz</h1>
-          {isLoggedIn && (
-            <button className="logoutButton" onClick={handleLogout}>
-              Logout
-            </button>
-          )}
-        </div>
-
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<HeroPage />} />
-            <Route path="/start" element={<StartPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/manage"
-              element={
-                <ProtectedRoute allowedRoles={["admin"]}>
-                  <ManageQuizPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/insert"
-              element={
-                <ProtectedRoute allowedRoles={["admin"]}>
-                  <InsertQuestionPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/edit/:id"
-              element={
-                <ProtectedRoute allowedRoles={["admin"]}>
-                  <EditQuestionPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/quiz/:questionId"
-              element={<QuizPage />
-              }
-            />
-            <Route path="/result"
-              element={<ResultPage />
-              }
-            />
-            <Route path="*" element={<Navigate to="/start" />} />
-          </Routes>
-        </div>
+    <div className="container">
+      <div className="header">
+        <h1 className="title">React Quiz</h1>
+        {isLoggedIn === true && (
+          <button className="logoutButton" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
       </div>
-    </QuizProvider>
+
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<HeroPage />} />
+          <Route path="/start" element={<StartPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/manage"
+            element={
+              <ProtectedRoute allowedRoles={["admin"]}>
+                <ManageQuizPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/insert"
+            element={
+              <ProtectedRoute allowedRoles={["admin"]}>
+                <InsertQuestionPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit/:id"
+            element={
+              <ProtectedRoute allowedRoles={["admin"]}>
+                <EditQuestionPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/quiz/:questionId"
+            element={<QuizPage />
+            }
+          />
+          <Route path="/result"
+            element={<ResultPage />
+            }
+          />
+          <Route path="*" element={<Navigate to="/start" />} />
+        </Routes>
+      </div>
+    </div>
   )
 }
 

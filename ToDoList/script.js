@@ -35,22 +35,22 @@ const renderFunc = (arrOfItems = items) => {
     }
 
     arrOfItems.forEach((item, index) => {
-                const strElm = `
+        const strElm = `
                 <li>
                        <input type="checkbox" class="checkbox" onchange="toggle(${index})" ${item.done ? "checked" : ""}>
                        <p>${index + 1}. ${item.title} </p>
                        <div>
-                         <button onclick="deleteFunc(${index})"><i class="fa-solid fa-xmark"></i></button>
+                         <button onclick="deleteFunc(${index})"><i class="fa-solid fa-trash"></i></button>
                          ${item.done ? "" : `<button onclick='editFunc(${index})'><i class="fa-solid fa-pen-to-square"></i></button>`}
                        </div>
                  </li> `;
-                if (item.done) {
-                    doneElm.innerHTML += strElm;
-                }
-                else {
-                    todoElm.innerHTML += strElm;
-                }
-            });
+        if (item.done) {
+            doneElm.innerHTML += strElm;
+        }
+        else {
+            todoElm.innerHTML += strElm;
+        }
+    });
 };
 
 let items = readData();
@@ -117,6 +117,7 @@ const confirmEdit = () => {
     if (editIndex !== null) {
         items[editIndex].title = inputElm.value.trim();
         inputElm.value = "";
+        editIndex = null;
         removeEditButtons();
         renderFunc();
         storeData();
@@ -125,6 +126,7 @@ const confirmEdit = () => {
 
 const cancelEdit = () => {
     inputElm.value = "";
+    editIndex = null;
     removeEditButtons();
 };
 

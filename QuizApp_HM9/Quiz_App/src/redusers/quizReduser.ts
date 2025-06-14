@@ -62,6 +62,7 @@ const quizReducer = (state: IQuizState, action: IQuizAction): IQuizState => {
             }
 
         case "RESTART_QUIZ":
+            console.log("RESTART_QUIZ triggered");
             return {
                 status: "start",
                 currentQuestionIndex: 0, 
