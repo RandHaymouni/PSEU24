@@ -1,0 +1,73 @@
+body{
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #37375b, #2e2e3f);
+  color: white;
+}
+
+.app{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  gap: 25px;
+}
+
+.board{
+  display: grid;
+  grid-template-columns: repeat(3,100px);
+  gap: 7px;
+  background: #1a1a2e;
+  padding:10px;
+  border-radius: 5px;
+}
+.cell{
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif; 
+}
+.cell:hover{
+    background-color: rgb(204, 210, 212);
+}
+
+.x{
+  color:  #ff4d6d;
+}
+
+.o{
+  color: #4da6ff;
+}
+
+.turnValue{
+  font-size: 33px;
+}
+
+.rstBtn{
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background-color: #1a1a2e;
+  border: 1px solid #1a1a2e;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  transition:transform 0.5s ease;
+}
+
+.rstBtn:hover{
+  background-color: #1f1f3a;
+}
+
+/* _______________________________________________________________ */
+/* I don't see that we need responsive design so I didn't add it. */
+
