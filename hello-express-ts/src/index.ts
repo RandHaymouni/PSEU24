@@ -3,6 +3,8 @@ import userRouter from './routes/users.router.js';
 import productRouter from './routes/products.router.js';
 import cors from 'cors';
 import { log } from 'console';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const port: number = 3000;
@@ -69,7 +71,7 @@ app.use(express.json());
 app.use(cors());
 app.use(logging)
 app.use('/users', userRouter);
-app.use('/products', requestBodyChecking, productRouter);
+app.use('/products',requestBodyChecking, productRouter);
 app.use(errorHandler)
 
 app.get('/', (req: express.Request, res: express.Response) => {

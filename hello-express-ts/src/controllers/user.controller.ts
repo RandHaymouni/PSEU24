@@ -36,9 +36,16 @@ const findUsers = ({ id, email, nameQ }: IFindUsersParams) => {
   return users;
 }
 
+const findUserByEmail = (email: string) => {
+  if (email) {
+    const user = USERS.find(user => user.email === email);
+    return user;
+  }
+}
 
 export default {
   getAllUsers,
   findUserById,
-  findUsers
+  findUsers,
+  findUserByEmail
 }

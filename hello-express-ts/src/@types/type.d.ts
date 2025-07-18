@@ -16,7 +16,7 @@ declare namespace Store {
     email: string;
     role: "Admin" | "Moderator" | "User" | "Guest";
     isActive: boolean;
-
+    password: string;
   }
 
   export interface IGetUserByEmailRequestParams {
